@@ -37,8 +37,8 @@ var totalOpenHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm',
 function getRandomNumCustomers(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; 
-  //The maximum is inclusive and the minimum is inclusive 
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+  //The maximum is inclusive and the minimum is inclusive
 };
 
 function arrSum(arr){
