@@ -48,6 +48,7 @@ function arrSum(arr){
 };
 
 //--------------------------------------------------------------------- SEATTLE LOCATION OBJECT
+
 var seattleCookies = {
   name : 'Seattle',
   minNumCustomers : 23,
@@ -98,8 +99,55 @@ seattleCookies.renderNameToPage();
 seattleCookies.renderHourTotalsToPage();
 seattleCookies.dailyTotalCookieSales();
 
+//---------------------------------------------------------------------- TOKYO OBJECT
+
+var tokyoCookies = {
+  name : 'Tokyo',
+  minNumCustomers : 3,
+  maxNumCustomers : 24,
+  avgNumCookies : 1.2,
+  dailyTokyoSales : [],
+
+  calculateTokyoHourlyCookieSales : function(){
+    
+    for (var i = 0; i < totalOpenHours.length; i++){
+      var randomNumber = getRandomNumCustomers(this.minNumCustomers, this.maxNumCustomers);
+      var totalHourlySalesTokyo = Math.round(randomNumber * this.avgNumCookies);
+      this.dailyTokyoSales.push(totalHourlySalesTokyo);
+    }
+  },
+
+  dailyTokyoCookieSales : function(){
+    var tokyoCookieTotal = arrSum(this.dailyTokyoSales);
+    var tokyoTotalCookieList = document.getElementById('tokyo-hours');
+    var tokyoTotalCookieItemInList = document.createElement('li');
+    tokyoTotalCookieItemInList.textContent = ('Total: ' + tokyoCookieTotal + ' cookies');
+    tokyoTotalCookieList.appendChild(tokyoTotalCookieItemInList);
+  },
+
+  renderTokyoNameToPage : function(){
+    var parentLocationNameTokyo = document.getElementById('tokyo');
+    var newHeadingTokyo = document.createElement('p');
+    newHeadingTokyo.textContent = this.name;
+    parentLocationNameTokyo.appendChild(newHeadingTokyo);
+  },
+
+  renderTokyoHourTotalToPage : function(){
+    var parentTokyoLocationHourlySales = document.getElementById('tokyo-hours');
+    for (var i = 0; i < totalOpenHours.length; i++){
+      var tokyoLocationListItem = document.createElement('li');
+      tokyoLocationListItem.textContent = totalOpenHours[i] + ': ' + this.dailyTokyoSales[i] + ' cookies';
+      parentTokyoLocationHourlySales.appendChild(tokyoLocationListItem);
+    }
+  },
 
 
+};
+
+tokyoCookies.calculateTokyoHourlyCookieSales();
+tokyoCookies.renderTokyoNameToPage();
+tokyoCookies.renderTokyoHourTotalToPage();
+tokyoCookies.dailyTokyoCookieSales();
 
 
 
