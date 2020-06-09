@@ -33,7 +33,7 @@ ul
 //-------------------------------------------------------------------- GLOBAL VARS AND FUNCTIONS
 var totalOpenHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm'];
 
-
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomNumCustomers(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -60,7 +60,7 @@ var seattleCookies = {
     var parentLocationName = document.getElementById('seattle'); //this is target
     var newHeading = document.createElement('p'); //this creates new element
     newHeading.textContent = this.name; //this gives new element content
-    parentLocationName.appendChild(newHeading);
+    parentLocationName.appendChild(newHeading); //append it to the parent
   },
   
   calculateHourlyCookieSales : function(){
