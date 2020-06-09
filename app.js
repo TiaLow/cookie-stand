@@ -39,7 +39,15 @@ function getRandomNumCustomers(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; 
   //The maximum is inclusive and the minimum is inclusive 
+};
+
+function arrSum(arr){
+  return arr.reduce(function(a,b){
+    return a + b;
+  }, 0);
 }
+
+
 
 //--------------------------------------------------------------------- SEATTLE LOCATION OBJECT
 var seattleCookies = {
@@ -48,7 +56,8 @@ var seattleCookies = {
   maxNumCustomers : 65,
   avgNumCookies : 6.3,
   dailySeattleSales : [] ,
-  calculateAllCookieSales : function(){
+
+  calculateHourlyCookieSales : function(){
 
     for (var i = 0; i < totalOpenHours.length; i++){
       //below Im creating a random number of customers by using the global function that randomizes INCLUSIVE of min and max number of customers
@@ -59,6 +68,15 @@ var seattleCookies = {
       this.dailySeattleSales.push(totalHourlySales);
     }
   },
+
+  dailyTotalCookieSales : function(){
+    var cookieTotal = arrSum(this.dailySeattleSales);
+    var totalCookieList = document.getElementById('seattle-hours');
+    var totalCookieItemInList = document.createElement('li');
+    totalCookieItemInList.textContent = ('Total: ' + cookieTotal + ' cookies');
+    totalCookieList.appendChild(totalCookieItemInList);
+  },
+
   renderNameToPage: function(){
     var parentLocationName = document.getElementById('seattle'); //this is target
     var newHeading = document.createElement('p'); //this creates new element
@@ -66,7 +84,7 @@ var seattleCookies = {
     parentLocationName.appendChild(newHeading);
   },
 
-  renderHoursToPage: function(){
+  renderHourTotalsToPage: function(){
     var parentLocationHourlySales = document.getElementById('seattle-hours');
     for (var i = 0; i < totalOpenHours.length; i++ ){
       var newLocations = document.createElement('li');
@@ -77,9 +95,10 @@ var seattleCookies = {
 
 };
 
-seattleCookies.calculateAllCookieSales();
+seattleCookies.calculateHourlyCookieSales();
 seattleCookies.renderNameToPage();
-seattleCookies.renderHoursToPage();
+seattleCookies.renderHourTotalsToPage();
+seattleCookies.dailyTotalCookieSales();
 
 
 
