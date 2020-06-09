@@ -70,6 +70,7 @@ var seattleCookies = {
       //below Im creating a random number of customers by using the global function that randomizes INCLUSIVE of min and max number of customers
       var randomNumber = getRandomNumCustomers(this.minNumCustomers, this.maxNumCustomers);
       //below is generating sales per hour using the random number of customers and avg num cookies per sale
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
       var totalHourlySales = Math.round(randomNumber * this.avgNumCookies);
       // below inserts each hours sales into an array
       this.dailySeattleSales.push(totalHourlySales);
