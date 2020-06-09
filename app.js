@@ -44,12 +44,6 @@ function getRandomNumCustomers(min, max) {
 //--------------------------------------------------------------------- SEATTLE LOCATION OBJECT
 var seattleCookies = {
   name : 'Seattle',
-  renderToPage: function(){
-    var parentUnorderedList = document.getElementById('seattle-ul'); //this is target
-    var newlistItem = document.createElement('li'); //this creates new element
-    newlistItem.textContent = this.name; //this gives new element content
-    parentUnorderedList.appendChild(newlistItem);
-  },
   minNumCustomers : 23,
   maxNumCustomers : 65,
   avgNumCookies : 6.3,
@@ -65,13 +59,27 @@ var seattleCookies = {
       this.dailySeattleSales.push(totalHourlySales);
     }
   },
+  renderNameToPage: function(){
+    var parentLocationName = document.getElementById('seattle'); //this is target
+    var newHeading = document.createElement('p'); //this creates new element
+    newHeading.textContent = this.name; //this gives new element content
+    parentLocationName.appendChild(newHeading);
+  },
 
-
+  renderHoursToPage: function(){
+    var parentLocationHourlySales = document.getElementById('seattle-hours');
+    for (var i = 0; i < totalOpenHours.length; i++ ){
+      var newLocations = document.createElement('li');
+      newLocations.textContent = totalOpenHours[i] + ': ' + this.dailySeattleSales[i] + ' cookies';
+      parentLocationHourlySales.appendChild(newLocations);
+    }
+  },
 
 };
 
 seattleCookies.calculateAllCookieSales();
-seattleCookies.renderToPage();
+seattleCookies.renderNameToPage();
+seattleCookies.renderHoursToPage();
 
 
 
