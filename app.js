@@ -40,7 +40,8 @@ function getRandomNumCustomers(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-
+//https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332
+// also with lots of help from classmate Chandler Puckett
 function arrSum(arr){
   return arr.reduce(function(a,b){
     return a + b;
