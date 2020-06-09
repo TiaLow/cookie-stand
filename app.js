@@ -20,7 +20,7 @@ Objects with properties:
 
 - display lists on sales.html
 
-- MAKE SURE EACH LOCATION IS ITS OWN JAVASCRIPT OBJECT 
+- MAKE SURE EACH LOCATION IS ITS OWN JAVASCRIPT OBJECT
 
 ul
   li- shop location name
@@ -30,7 +30,7 @@ ul
 
 */
 
-//-------------------------------------------------------------------- GLOBAL VAR AND FUNCTION
+//-------------------------------------------------------------------- GLOBAL VARS AND FUNCTIONS
 var totalOpenHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm'];
 
 
@@ -38,16 +38,14 @@ function getRandomNumCustomers(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
-  //The maximum is inclusive and the minimum is inclusive
 };
+
 
 function arrSum(arr){
   return arr.reduce(function(a,b){
     return a + b;
   }, 0);
-}
-
-
+};
 
 //--------------------------------------------------------------------- SEATTLE LOCATION OBJECT
 var seattleCookies = {
