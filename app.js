@@ -44,6 +44,18 @@ ul
 
 var totalOpenHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm'];
 
+// debugger;
+// var hoursTargetToTable = document.getElementById('cookie-table');
+
+// var hoursCreateRowInTable = document.createElement('tr');
+// var hoursCreateCellInTable = document.createElement('td');
+// var hoursTextToTable = document.createTextNode('6am');
+
+// hoursCreateCellInTable.appendChild(hoursTextToTable);
+// hoursCreateRowInTable.appendChild(hoursCreateCellInTable);
+// hoursTargetToTable.appendChild(hoursCreateRowInTable);
+
+
 //--------------------------------------- Function randomizer
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -86,17 +98,6 @@ function arrSum(arr){
   }, 0);
 }
 
-//---------------------------------------- Function to find the sum of day's hourly sales and render
-
-function calculateDailyTotalCookieSales(){
-  // debugger;
-  var cookieTotal = arrSum(this.dailyStoreSales);
-  var totalCookieList = document.getElementById(this.unorderedListId);
-  var totalCookieItemInList = document.createElement('li');
-  totalCookieItemInList.textContent = ('Total: ' + cookieTotal + ' cookies');
-  totalCookieList.appendChild(totalCookieItemInList);
-}
-
 //---------------------------------------- Function to render hourly totals to page
 
 function renderHourTotalsToPage(){
@@ -108,12 +109,78 @@ function renderHourTotalsToPage(){
   }
 }
 
+//---------------------------------------- Function to find the sum of location's hourly sales and render
+
+function calculateDailyTotalCookieSales(){
+  // debugger;
+  var cookieTotal = arrSum(this.dailyStoreSales);
+  var totalCookieList = document.getElementById(this.unorderedListId);
+  var totalCookieItemInList = document.createElement('li');
+  totalCookieItemInList.textContent = ('Total: ' + cookieTotal + ' cookies');
+  totalCookieList.appendChild(totalCookieItemInList);
+}
+
 //---------------------------------------- Function to render name to page
 
 function renderNameToPage(){
   var pName = document.getElementById(this.nameId);
   pName.textContent = this.branchName;
 }
+
+//---------------------------------------- Function to render location names to table
+
+// function renderToTable(){
+//   var table = document.getElementById('cookie-table'); //telling it to find the table with id cookie-table
+//   var tableRow = document.createElement('tr'); //creating a table row element
+//   var tableCell = document.createElement('td'); //creating a table cell element
+
+//   tableCell.textContent = this.branchName;
+//   tableRow.appendChild(tableCell);
+//   table.appendChild(tableRow);
+
+// }
+
+//----------------------------------------- Function to get heading on table
+
+function createTableHeader(){
+  var tableHeader = document.getElementById('cookie-table');
+  var tableHeaderRow = document.createElement('tr');
+  var singleStoreHeading = document.createElement('th');
+  singleStoreHeading.textContent = 'Store';
+  tableHeaderRow.appendChild(singleStoreHeading);
+
+  for (var i = 0; i < totalOpenHours.length; i++){
+    var openHoursHeader = document.createElement('th');
+    openHoursHeader.textContent = totalOpenHours[i];
+    tableHeaderRow.appendChild(openHoursHeader);
+  }
+
+  var dailyLocationTotal = document.createElement('th');
+  dailyLocationTotal.textContent = 'Daily Location Total';
+  tableHeaderRow.appendChild(dailyLocationTotal);
+
+  tableHeader.appendChild(tableHeaderRow);
+}
+
+//------------------------------------------- Function to get store sales into table
+
+
+function renderStoreInfoToTable(){
+  var table = document.getElementById('cookie-table');
+  var tableRow = document.createElement('tr');
+  var tableCell = document.createElement('th');
+
+  tableCell.textContent = this.branchName;
+  tableRow.appendChild(tableCell);
+
+  for (var i = 0; i < this.dailyStoreSales.length; i++){
+    tableCell = document.createElement('td');
+    tableCell.textContent = this.dailyStoreSales[i];
+    tableRow.appendChild(tableCell);
+  }
+  table.appendChild(tableRow);
+}
+
 
 
 //------------------------------------------------------------------------------------------
@@ -141,9 +208,17 @@ SalmonCookies.prototype.renderHourTotalsToPage = renderHourTotalsToPage;
 
 SalmonCookies.prototype.renderNameToPage = renderNameToPage;
 
+// SalmonCookies.prototype.renderToTable = renderToTable;
+
+SalmonCookies.prototype.renderStoreInfoToTable = renderStoreInfoToTable;
+
 //------------------------------------------------------------------------------------------
 //----------------------------------------------------- NEW INSTANCES ----------------------
 //------------------------------------------------------------------------------------------
+
+createTableHeader();
+
+
 var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3, 'seattle-hours', 'seattle');
 
 seattleStore.renderNameToPage();
@@ -151,7 +226,8 @@ seattleStore.calculateRandomNumCustomers();
 seattleStore.calculateHourlyCookieSales();
 seattleStore.renderHourTotalsToPage();
 seattleStore.calculateDailyTotalCookieSales();
-
+// seattleStore.renderToTable();
+seattleStore.renderStoreInfoToTable();
 
 var tokyoStore = new SalmonCookies('Tokyo', 3, 24, 1.2, 'tokyo-hours', 'tokyo');
 
@@ -160,7 +236,8 @@ tokyoStore.calculateRandomNumCustomers();
 tokyoStore.calculateHourlyCookieSales();
 tokyoStore.renderHourTotalsToPage();
 tokyoStore.calculateDailyTotalCookieSales();
-
+// tokyoStore.renderToTable();
+tokyoStore.renderStoreInfoToTable();
 
 var dubaiStore = new SalmonCookies('Dubai', 11, 28, 3.7, 'dubai-hours', 'dubai');
 
@@ -169,7 +246,8 @@ dubaiStore.calculateRandomNumCustomers();
 dubaiStore.calculateHourlyCookieSales();
 dubaiStore.renderHourTotalsToPage();
 dubaiStore.calculateDailyTotalCookieSales();
-
+// dubaiStore.renderToTable();
+dubaiStore.renderStoreInfoToTable();
 
 var parisStore = new SalmonCookies('Paris', 20, 38, 2.3, 'paris-hours', 'paris');
 
@@ -178,6 +256,8 @@ parisStore.calculateRandomNumCustomers();
 parisStore.calculateHourlyCookieSales();
 parisStore.renderHourTotalsToPage();
 parisStore.calculateDailyTotalCookieSales();
+// parisStore.renderToTable();
+parisStore.renderStoreInfoToTable();
 
 var limaStore = new SalmonCookies('Lima', 2, 16, 4.6, 'lima-hours', 'lima');
 
@@ -186,7 +266,8 @@ limaStore.calculateRandomNumCustomers();
 limaStore.calculateHourlyCookieSales();
 limaStore.renderHourTotalsToPage();
 limaStore.calculateDailyTotalCookieSales();
-
+// limaStore.renderToTable();
+limaStore.renderStoreInfoToTable();
 
 
 //-------------------------------------------------------------------------------------------------
