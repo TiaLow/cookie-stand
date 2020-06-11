@@ -1,8 +1,5 @@
 'use strict';
 
-
-
-
 //--------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------- GLOBAL VARS AND FUNCTIONS----
 //--------------------------------------------------------------------------------------------------
@@ -32,7 +29,7 @@ function calculateHourlyCookieSales(){
 
 //https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332
 // also with lots of help from classmate Chandler Puckett
-// debugger;
+
 function arrSum(arr){
   return arr.reduce(function(a,b){
     return a + b;
@@ -56,13 +53,9 @@ var hourlyTotalsAllLocationstoColumns = [];
 //---------------------------------------- Function to find the sum of location's hourly sales and render
 
 function calculateDailyTotalCookieSales(){
-  // debugger;
   var cookieTotal = arrSum(this.dailyStoreSales);
   this.dailyStoreSalesTotal.push(cookieTotal);
 }
-
-
-//---------------------------------------- Function to calculate grand total across locations in a day
 
 
 //-----------------------------------------------------------------------------------------------
@@ -146,18 +139,6 @@ function renderTableFooter(){
 
 
 
-//------------------------------------------------------------------------------
-// var totalTotalAcrossLocations = document.createElement('td');
-// totalTotalAcrossLocations.textContent = locationTotalTotals;
-// console.log(locationTotalTotals);
-// tableFooterRow.appendChild(totalTotalAcrossLocations);
-
-//---------^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//---------^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
-
 //------------------------------------------------------------------------------------------
 //------------------------------------------------------------------ CONSTRUCTOR FUNCTION---
 //------------------------------------------------------------------------------------------
@@ -178,8 +159,6 @@ SalmonCookies.prototype.calculateHourlyTotalsAcrossLocations = calculateHourlyTo
 
 SalmonCookies.prototype.calculateDailyTotalCookieSales = calculateDailyTotalCookieSales;
 
-// SalmonCookies.prototype.calculateTotalTotal = calculateTotalTotal;
-
 SalmonCookies.prototype.renderStoreInfoToTable = renderStoreInfoToTable;
 
 SalmonCookies.prototype.renderTableFooter = renderTableFooter;
@@ -191,16 +170,15 @@ SalmonCookies.prototype.renderTableFooter = renderTableFooter;
 
 createTableHeader();
 
-
-var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3);
-
 //TO DO- CAN MAKE THESE BELOW DYNAMIC USING ALL BRANCH VARIABLE AND FOR LOOP
 // allBranches[k].renderStoreInfoToTable();    for var k = 0; k < allBranches.length; k++
+
+
+var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3);
 
 seattleStore.calculateHourlyCookieSales();
 seattleStore.calculateDailyTotalCookieSales();
 seattleStore.renderStoreInfoToTable();
-// seattleStore.calculateTotalTotal();
 
 
 
@@ -209,16 +187,14 @@ var tokyoStore = new SalmonCookies('Tokyo', 3, 24, 1.2);
 tokyoStore.calculateHourlyCookieSales();
 tokyoStore.calculateDailyTotalCookieSales();
 tokyoStore.renderStoreInfoToTable();
-// tokyoStore.calculateTotalTotal();
+
 
 
 var dubaiStore = new SalmonCookies('Dubai', 11, 28, 3.7);
 
-
 dubaiStore.calculateHourlyCookieSales();
 dubaiStore.calculateDailyTotalCookieSales();
 dubaiStore.renderStoreInfoToTable();
-// dubaiStore.calculateTotalTotal();
 
 
 var parisStore = new SalmonCookies('Paris', 20, 38, 2.3);
@@ -226,7 +202,6 @@ var parisStore = new SalmonCookies('Paris', 20, 38, 2.3);
 parisStore.calculateHourlyCookieSales();
 parisStore.calculateDailyTotalCookieSales();
 parisStore.renderStoreInfoToTable();
-// parisStore.calculateTotalTotal();
 
 
 var limaStore = new SalmonCookies('Lima', 2, 16, 4.6);
@@ -234,9 +209,7 @@ var limaStore = new SalmonCookies('Lima', 2, 16, 4.6);
 limaStore.calculateHourlyCookieSales();
 limaStore.calculateDailyTotalCookieSales();
 limaStore.renderStoreInfoToTable();
-// limaStore.calculateTotalTotal();
-
 
 calculateHourlyTotalsAcrossLocations();
-// calculateTotalTotal();
+
 renderTableFooter();
