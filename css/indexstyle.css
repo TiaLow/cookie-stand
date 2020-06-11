@@ -2,6 +2,25 @@ body{
   background-color: #DB610F30;
 }
 
+nav > ul > li{
+  display: inline;
+  margin: 40px;
+}
+
 h3{
-  font-style : italic;
+  font-style: italic;
+}
+
+#location-hour-contact li{
+  display: inline;
+  border: black 2px;
+  margin-right: 50px;
+}
+
+#picture-line{
+  list-style: none;
+}
+
+ul#picture-line li{
+  display: inline;
 }
