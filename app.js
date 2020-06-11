@@ -1,5 +1,35 @@
 'use strict';
 
+// FORM STUFF
+//1. you need a target
+// 2. you need to add an event listener to that target
+// - 2a. listener need a type of event to listen to
+// - 2b. need a function that the listener can call whenever the event happens
+
+var newStoreForm = document.getElementById('newStoreForm');
+
+newStoreForm.addEventListener('submit', function(storeEvent){
+  storeEvent.preventDefault();
+
+  var theEvent = storeEvent;
+  var theForm = theEvent.target;
+  // console.log('target of theForm is: ', theForm);
+
+  var inputOfCityLocation = theForm.location;
+  var userTypedLocation = inputOfCityLocation.value;
+  // console.log('city location: ', userTypedLocation);
+  //SICK it works!
+
+  var inputOfMinCustomers = storeEvent.target.minCust.value;
+  // console.log(inputOfMinCustomers);
+  var inputOfMaxCustomers = storeEvent.target.maxCust.value;
+  var inputOfAvgCookies = storeEvent.target.avgCookies.value;
+
+  console.log(userTypedLocation, inputOfMinCustomers, inputOfMaxCustomers, inputOfAvgCookies);
+
+});
+
+
 //--------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------- GLOBAL VARS AND FUNCTIONS----
 //--------------------------------------------------------------------------------------------------
