@@ -13,15 +13,11 @@ newStoreForm.addEventListener('submit', function(storeEvent){
 
   var theEvent = storeEvent;
   var theForm = theEvent.target;
-  // console.log('target of theForm is: ', theForm);
 
   var inputOfCityLocation = theForm.location;
   var userTypedLocation = inputOfCityLocation.value;
-  // console.log('city location: ', userTypedLocation);
-  //SICK it works!
 
   var inputOfMinCustomers = storeEvent.target.minCust.value;
-  // console.log(inputOfMinCustomers);
   var inputOfMaxCustomers = storeEvent.target.maxCust.value;
   var inputOfAvgCookies = storeEvent.target.avgCookies.value;
 
@@ -50,26 +46,20 @@ function refreshTable(){
 
   createTableHeader();
 
-  //3.goes through each store and tell each one its their turn to render
   for (var i = 0; i < allBranches.length; i++){
     allBranches[i].renderStoreInfoToTable();
   }
 
-  //recreating footer
   calculateHourlyTotalsAcrossLocations();
   renderTableFooter();
 }
 
-// console.log(newDataArray);
 
-
-//--------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------- GLOBAL VARS AND FUNCTIONS----
-//--------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//---------------------------------------------------- GLOBAL VARS AND FUNCTIONS----
+//----------------------------------------------------------------------------------
 
 var totalOpenHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-
-// var allNewBranchesFromForm = [];
 
 //--------------------------------------- Function randomizer
 
@@ -121,7 +111,7 @@ function calculateHourlyTotalsAcrossLocations(){
 var hourlyTotalsAllLocationstoColumns = [];
 
 
-//---------------------------------------- Function to find the sum of location's hourly sales and render
+//------------------------------------ Function to find the sum of location's hourly sales and render
 
 function calculateDailyTotalCookieSales(){
   var cookieTotal = arrSum(this.dailyStoreSales);
@@ -129,9 +119,9 @@ function calculateDailyTotalCookieSales(){
 }
 
 
-//-----------------------------------------------------------------------------------------------
-//----------------------------------------------------------- TABLE STUFF -----------------------
-//-----------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//------------------------------------------------- TABLE STUFF ------------------
+//--------------------------------------------------------------------------------
 
 //----------------------------------------- Function to get heading on table
 
@@ -187,7 +177,6 @@ function renderTableFooter(){
 
   tableFooterCell.textContent = 'Total Sales by the Hour: ';
 
-
   tableFooterTarget.appendChild(tableFooterRow);
   tableFooterRow.appendChild(tableFooterCell);
 
@@ -210,9 +199,9 @@ function renderTableFooter(){
 }
 
 
-//------------------------------------------------------------------------------------------
-//------------------------------------------------------------------ CONSTRUCTOR FUNCTION---
-//------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------ CONSTRUCTOR FUNCTION---
+//------------------------------------------------------------------------------
 
 var allBranches = [];
 
@@ -228,25 +217,16 @@ function SalmonCookies(branchName, minNumCustomer, maxNumCustomer, avgNumCookies
 }
 
 SalmonCookies.prototype.calculateHourlyCookieSales = calculateHourlyCookieSales;
-
 SalmonCookies.prototype.calculateHourlyTotalsAcrossLocations = calculateHourlyTotalsAcrossLocations;
-
 SalmonCookies.prototype.calculateDailyTotalCookieSales = calculateDailyTotalCookieSales;
-
 SalmonCookies.prototype.renderStoreInfoToTable = renderStoreInfoToTable;
-
 SalmonCookies.prototype.renderTableFooter = renderTableFooter;
 
-
-//------------------------------------------------------------------------------------------
-//----------------------------------------------------- NEW INSTANCES ----------------------
-//------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------- NEW INSTANCES --------
+//--------------------------------------------------------------------------------
 
 createTableHeader();
-
-//TO DO- CAN MAKE THESE BELOW DYNAMIC USING ALL BRANCH VARIABLE AND FOR LOOP
-// allBranches[k].renderStoreInfoToTable();    for var k = 0; k < allBranches.length; k++
-
 
 var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3);
 
@@ -282,25 +262,5 @@ limaStore.calculateHourlyCookieSales();
 limaStore.calculateDailyTotalCookieSales();
 limaStore.renderStoreInfoToTable();
 
-// var testStore = new SalmonCookies('Test', 5, 36, 9.6);
-
-// testStore.calculateHourlyCookieSales();
-// testStore.calculateDailyTotalCookieSales();
-// testStore.renderStoreInfoToTable();
-
-//NEED NEW INSTANCE FOR DATA RETURNED FROM TABLE
-
-
-
-
-
-
-
 calculateHourlyTotalsAcrossLocations();
-
 renderTableFooter();
-
-
-
-
-// console.log(userTypedLocation);
