@@ -7,10 +7,34 @@ nav > ul > li{
   margin: 40px;
 }
 
-h3{
-  font-style: italic;
+h1{
+  font-family: 'Amatic SC', cursive;
+  font-size: 70px;
+  color: #C24B3E;
+  text-shadow: 4px 4px 10px #C24B3E90;
+  /* https://www.w3schools.com/cssref/css3_pr_text-shadow.asp */
+  text-align: center;
+  border: #627500 dotted 2px;
+  border-radius: 40px;
 }
 
+img#logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2{
+  font-family: 'Amatic SC', cursive;
+  font-style: italic;
+  font-size: 30px;
+  text-align: center;
+  color: #C24B3E;
+}
+
+p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 #location-hour-contact li{
   display: inline;
   border: black 2px;
