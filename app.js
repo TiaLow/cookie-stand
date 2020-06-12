@@ -50,7 +50,7 @@ function refreshTable(){
     allBranches[i].renderStoreInfoToTable();
   }
 
-  calculateHourlyTotalsAcrossLocations();
+  calculateHourlyTotals();
   renderTableFooter();
 }
 
@@ -75,14 +75,13 @@ function calculateHourlyCookieSales(){
   for (var i = 0; i < totalOpenHours.length; i++){
     var ranNumCustomers = mathRandomizer(this.minNumCustomer, this.maxNumCustomer);
     var ranNumHourlyCookieSales = Math.round(ranNumCustomers * this.avgNumCookies);
-    this.dailyStoreSales.push(ranNumHourlyCookieSales);
+    this.hourlySalesArray.push(ranNumHourlyCookieSales);
   }
 }
 
 //--------------------------------------- Function to find the sum of an array
 
 //https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332
-// also with lots of help from classmate Chandler Puckett
 
 function arrSum(arr){
   return arr.reduce(function(a,b){
@@ -92,30 +91,28 @@ function arrSum(arr){
 
 //---------------------------------------- Function to calculate hour totals from all locations
 
-function calculateHourlyTotalsAcrossLocations(){
-  hourlyTotalsAllLocationstoColumns = [];
+function calculateHourlyTotals(){
+  hourlyTotalsArray = [];
   // for loop below is in control of cycling through each hour
   for (var i = 0; i < totalOpenHours.length; i++){
     var totalPerHour = 0;
     //for every hour, for every store
     for ( var j = 0; j < allBranches.length; j++){
-      totalPerHour += allBranches[j].dailyStoreSales[i];
+      totalPerHour += allBranches[j].hourlySalesArray[i];
       //j control store we're working with, i controls hour
     }
-
-    hourlyTotalsAllLocationstoColumns.push(totalPerHour);
-
+    hourlyTotalsArray.push(totalPerHour);
   }
 }
 
-var hourlyTotalsAllLocationstoColumns = [];
+var hourlyTotalsArray = [];
 
 
 //------------------------------------ Function to find the sum of location's hourly sales and render
 
 function calculateDailyTotalCookieSales(){
-  var cookieTotal = arrSum(this.dailyStoreSales);
-  this.dailyStoreSalesTotal.push(cookieTotal);
+  var cookieTotal = arrSum(this.hourlySalesArray);
+  this.dailySalesTotal.push(cookieTotal);
 }
 
 
@@ -156,15 +153,15 @@ function renderStoreInfoToTable(){
   tableCell.textContent = this.branchName;
   tableRow.appendChild(tableCell);
 
-  for (var i = 0; i < this.dailyStoreSales.length; i++){
+  for (var i = 0; i < this.hourlySalesArray.length; i++){
     tableCell = document.createElement('td');
-    tableCell.textContent = this.dailyStoreSales[i];
+    tableCell.textContent = this.hourlySalesArray[i];
     tableRow.appendChild(tableCell);
   }
   table.appendChild(tableRow);
 
   var storeLocationTotal = document.createElement('td');
-  storeLocationTotal.textContent = this.dailyStoreSalesTotal[0];
+  storeLocationTotal.textContent = this.dailySalesTotal[0];
   tableRow.appendChild(storeLocationTotal);
 }
 
@@ -180,20 +177,20 @@ function renderTableFooter(){
   tableFooterTarget.appendChild(tableFooterRow);
   tableFooterRow.appendChild(tableFooterCell);
 
-  var locationTotalTotals = 0;
+  var finalTotal = 0;
 
-  for (var i = 0; i < hourlyTotalsAllLocationstoColumns.length; i++){
-    var hourlyTotalsCellsInFooter = document.createElement('td');
-    hourlyTotalsCellsInFooter.textContent = hourlyTotalsAllLocationstoColumns[i];
+  for (var i = 0; i < hourlyTotalsArray.length; i++){
+    var hourlyTotalsCells = document.createElement('td');
+    hourlyTotalsCells.textContent = hourlyTotalsArray[i];
 
 
-    locationTotalTotals += hourlyTotalsAllLocationstoColumns[i];
-    tableFooterRow.appendChild(hourlyTotalsCellsInFooter);
+    finalTotal += hourlyTotalsArray[i];
+    tableFooterRow.appendChild(hourlyTotalsCells);
 
   }
 
   var cellForTotalTotals = document.createElement('td');
-  cellForTotalTotals.textContent = locationTotalTotals;
+  cellForTotalTotals.textContent = finalTotal;
   tableFooterRow.appendChild(cellForTotalTotals);
   // tableFooterTarget.appendChild(tableFooter);
 }
@@ -210,14 +207,14 @@ function SalmonCookies(branchName, minNumCustomer, maxNumCustomer, avgNumCookies
   this.minNumCustomer = minNumCustomer;
   this.maxNumCustomer = maxNumCustomer;
   this.avgNumCookies = avgNumCookies;
-  this.dailyStoreSales = [];
-  this.dailyStoreSalesTotal = [] ;
+  this.hourlySalesArray = [];
+  this.dailySalesTotal = [] ;
   allBranches.push(this);
 
 }
 
 SalmonCookies.prototype.calculateHourlyCookieSales = calculateHourlyCookieSales;
-SalmonCookies.prototype.calculateHourlyTotalsAcrossLocations = calculateHourlyTotalsAcrossLocations;
+SalmonCookies.prototype.calculateHourlyTotals = calculateHourlyTotals;
 SalmonCookies.prototype.calculateDailyTotalCookieSales = calculateDailyTotalCookieSales;
 SalmonCookies.prototype.renderStoreInfoToTable = renderStoreInfoToTable;
 SalmonCookies.prototype.renderTableFooter = renderTableFooter;
@@ -229,38 +226,32 @@ SalmonCookies.prototype.renderTableFooter = renderTableFooter;
 createTableHeader();
 
 var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3);
-
-seattleStore.calculateHourlyCookieSales();
-seattleStore.calculateDailyTotalCookieSales();
-seattleStore.renderStoreInfoToTable();
-
-
 var tokyoStore = new SalmonCookies('Tokyo', 3, 24, 1.2);
-
-tokyoStore.calculateHourlyCookieSales();
-tokyoStore.calculateDailyTotalCookieSales();
-tokyoStore.renderStoreInfoToTable();
-
-
 var dubaiStore = new SalmonCookies('Dubai', 11, 28, 3.7);
-
-dubaiStore.calculateHourlyCookieSales();
-dubaiStore.calculateDailyTotalCookieSales();
-dubaiStore.renderStoreInfoToTable();
-
-
 var parisStore = new SalmonCookies('Paris', 20, 38, 2.3);
-
-parisStore.calculateHourlyCookieSales();
-parisStore.calculateDailyTotalCookieSales();
-parisStore.renderStoreInfoToTable();
-
-
 var limaStore = new SalmonCookies('Lima', 2, 16, 4.6);
 
-limaStore.calculateHourlyCookieSales();
-limaStore.calculateDailyTotalCookieSales();
-limaStore.renderStoreInfoToTable();
+function doTheThings(){
+  for (var i=0; i < allBranches.length; i++){
+    allBranches[i].calculateHourlyCookieSales();
+    allBranches[i].calculateDailyTotalCookieSales();
+    allBranches[i].renderStoreInfoToTable();
+  }
+}
 
-calculateHourlyTotalsAcrossLocations();
+doTheThings();
+calculateHourlyTotals();
 renderTableFooter();
+
+
+
+
+// var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3);
+// seattleStore.calculateHourlyCookieSales();
+// seattleStore.calculateDailyTotalCookieSales();
+// seattleStore.renderStoreInfoToTable();
+
+
+
+
+
