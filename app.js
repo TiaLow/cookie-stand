@@ -17,6 +17,7 @@ newStoreForm.addEventListener('submit', function(storeEvent){
   var inputOfCityLocation = theForm.location;
   var userTypedLocation = inputOfCityLocation.value;
 
+  //NEED TO PUT PARSE INT OR PARSE FLOAT HERE SO THE NUMBERS DONT BUNG UP
   var inputOfMinCustomers = storeEvent.target.minCust.value;
   var inputOfMaxCustomers = storeEvent.target.maxCust.value;
   var inputOfAvgCookies = storeEvent.target.avgCookies.value;
@@ -24,8 +25,8 @@ newStoreForm.addEventListener('submit', function(storeEvent){
   var newStoreFromForm = new SalmonCookies(userTypedLocation, inputOfMinCustomers, inputOfMaxCustomers, inputOfAvgCookies);
 
 
-  newStoreFromForm.calculateHourlyCookieSales();
-  newStoreFromForm.calculateDailyTotalCookieSales();
+  newStoreFromForm.calculateHourlySales();
+  newStoreFromForm.calculateDailyTotalSales();
   newStoreFromForm.renderStoreInfoToTable();
 
   refreshTable();
@@ -71,7 +72,7 @@ function mathRandomizer(min, max) {
 
 //--------------------------------------- Function to randomize customers, calc hourly cookie sales
 
-function calculateHourlyCookieSales(){
+function calculateHourlySales(){
   for (var i = 0; i < totalOpenHours.length; i++){
     var ranNumCustomers = mathRandomizer(this.minNumCustomer, this.maxNumCustomer);
     var ranNumHourlyCookieSales = Math.round(ranNumCustomers * this.avgNumCookies);
@@ -110,7 +111,7 @@ var hourlyTotalsArray = [];
 
 //------------------------------------ Function to find the sum of location's hourly sales and render
 
-function calculateDailyTotalCookieSales(){
+function calculateDailyTotalSales(){
   var cookieTotal = arrSum(this.hourlySalesArray);
   this.dailySalesTotal.push(cookieTotal);
 }
@@ -213,9 +214,9 @@ function SalmonCookies(branchName, minNumCustomer, maxNumCustomer, avgNumCookies
 
 }
 
-SalmonCookies.prototype.calculateHourlyCookieSales = calculateHourlyCookieSales;
+SalmonCookies.prototype.calculateHourlySales = calculateHourlySales;
 SalmonCookies.prototype.calculateHourlyTotals = calculateHourlyTotals;
-SalmonCookies.prototype.calculateDailyTotalCookieSales = calculateDailyTotalCookieSales;
+SalmonCookies.prototype.calculateDailyTotalSales = calculateDailyTotalSales;
 SalmonCookies.prototype.renderStoreInfoToTable = renderStoreInfoToTable;
 SalmonCookies.prototype.renderTableFooter = renderTableFooter;
 
@@ -233,8 +234,8 @@ var limaStore = new SalmonCookies('Lima', 2, 16, 4.6);
 
 function doTheThings(){
   for (var i=0; i < allBranches.length; i++){
-    allBranches[i].calculateHourlyCookieSales();
-    allBranches[i].calculateDailyTotalCookieSales();
+    allBranches[i].calculateHourlySales();
+    allBranches[i].calculateDailyTotalSales();
     allBranches[i].renderStoreInfoToTable();
   }
 }
@@ -247,8 +248,8 @@ renderTableFooter();
 
 
 // var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3);
-// seattleStore.calculateHourlyCookieSales();
-// seattleStore.calculateDailyTotalCookieSales();
+// seattleStore.calculateHourlySales();
+// seattleStore.calculateDailyTotalSales();
 // seattleStore.renderStoreInfoToTable();
 
 
