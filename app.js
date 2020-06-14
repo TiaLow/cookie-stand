@@ -18,9 +18,9 @@ newStoreForm.addEventListener('submit', function(storeEvent){
   var userTypedLocation = inputOfCityLocation.value;
 
   //NEED TO PUT PARSE INT OR PARSE FLOAT HERE SO THE NUMBERS DONT BUNG UP
-  var inputOfMinCustomers = storeEvent.target.minCust.value;
-  var inputOfMaxCustomers = storeEvent.target.maxCust.value;
-  var inputOfAvgCookies = storeEvent.target.avgCookies.value;
+  var inputOfMinCustomers = parseInt(storeEvent.target.minCust.value);
+  var inputOfMaxCustomers = parseInt(storeEvent.target.maxCust.value);
+  var inputOfAvgCookies = parseFloat(storeEvent.target.avgCookies.value);
 
   var newStoreFromForm = new SalmonCookies(userTypedLocation, inputOfMinCustomers, inputOfMaxCustomers, inputOfAvgCookies);
 
