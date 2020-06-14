@@ -1,16 +1,40 @@
 *{
   box-sizing: border-box;
+  /* float: left; */
 }
-  
   
 body{
   background-color: #DB610F30;
 }
 
+/* ------------------------------------------------- HEADER STYLING STARTS HERE */
+
 nav > ul > li{
   display: inline;
-  margin-right: 6px;
+  margin-right: 25px;
 }
+
+a{
+  text-decoration: none;
+  color: rgb(75, 75, 4);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+a:hover{
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+a:visited{
+  text-decoration: none;
+  color: rgb(111, 111, 3);
+  /* font-weight: bold; */
+  font-size: 15px;
+}
+
+/*-------------------------------------------------- MAIN STYLING STARTS HERE */
+
 
 h1{
   font-family: 'Amatic SC', cursive;
@@ -23,33 +47,91 @@ h1{
   border-radius: 40px;
   margin-top: 2px;
   margin-bottom: 8px;
+  /* display: inline; */
+  padding: 10px;
 }
 
-img.logo{
-  float: left;
-  /* margin-left: auto;
-  margin-right: auto; */
+#logo{
   height: 150px;
-  width: 50%;
-  padding: 5px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 8px;
   }
 
 h2{
   font-family: 'Amatic SC', cursive;
   font-style: italic;
-  font-size: 30px;
+  font-size: 45px;
   text-align: center;
   color: #C24B3E;
   margin-bottom: 10px;
 }
 
+section.locations{
+  display: inline-block; 
+  width: 49%;
+}
+
+section > ul > li{
+  list-style: none;
+}
+
+li.centeredul{
+  text-align: center;
+}
+
+article{
+  display: inline-block;
+  width: 48%;
+  border: #627500 dotted 2px;
+  border-radius: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* #box-around-location{
+  border: #627500 dotted 2px;
+  border-radius: 40px;
+} */
+
+h3{
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  font-size: 35px;
+  text-align: left;
+  color: #C24B3E;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+h4{
+  font-family: 'Amatic SC', cursive;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  margin-left: 40px;
+  color: #C24B3E;
+  margin-bottom: 10px;
+}
+
+#centeredh4{
+  font-family: 'Amatic SC', cursive;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 40px;
+  color: #C24B3E;
+  margin-bottom: 10px;
+}
+
+
 p{
   font-family: Georgia, 'Times New Roman', Times, serif;
-}
-#location-hour-contact li{
-  display: inline;
-  border: black 2px;
-  margin-right: 50px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 #picture-line{
@@ -59,3 +141,5 @@ p{
 ul#picture-line li{
   display: inline;
 }
+
+/*-------------------------------------------------- FOOTER STYLING STARTS HERE */

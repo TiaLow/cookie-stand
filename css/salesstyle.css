@@ -44,5 +44,24 @@ input[type=text]{
 
 footer > nav > ul > li{
   display: inline;
-  margin: 40px;
+  margin-right: 25px;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(75, 75, 4);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+a:hover{
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+a:visited{
+  text-decoration: none;
+  color: rgb(111, 111, 3);
+  /* font-weight: bold; */
+  font-size: 15px;
 }
