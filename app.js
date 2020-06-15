@@ -1,11 +1,5 @@
 'use strict';
 
-// FORM STUFF
-//1. you need a target
-// 2. you need to add an event listener to that target
-// - 2a. listener need a type of event to listen to
-// - 2b. need a function that the listener can call whenever the event happens
-
 var newStoreForm = document.getElementById('newStoreForm');
 
 newStoreForm.addEventListener('submit', function(storeEvent){
@@ -29,16 +23,9 @@ newStoreForm.addEventListener('submit', function(storeEvent){
   newStoreFromForm.renderStoreInfoToTable();
 
   refreshTable();
-
-
 });
 
 // CITING SKYLER BURGER HERE, HE HELPED ME IMMENSELY WITH THE FOLLOWING:
-
-//1. we want to clear the table
-//2. recreate header
-//3. ask each store to render itself
-//4. recreate footer
 
 function refreshTable(){
   var table = document.getElementById('cookie-table');
@@ -183,16 +170,13 @@ function renderTableFooter(){
     var hourlyTotalsCells = document.createElement('td');
     hourlyTotalsCells.textContent = hourlyTotalsArray[i];
 
-
     finalTotal += hourlyTotalsArray[i];
     tableFooterRow.appendChild(hourlyTotalsCells);
-
   }
 
   var cellForTotalTotals = document.createElement('td');
   cellForTotalTotals.textContent = finalTotal;
   tableFooterRow.appendChild(cellForTotalTotals);
-  // tableFooterTarget.appendChild(tableFooter);
 }
 
 
@@ -242,16 +226,5 @@ function doTheThings(){
 doTheThings();
 calculateHourlyTotals();
 renderTableFooter();
-
-
-
-
-// var seattleStore = new SalmonCookies('Seattle', 23, 65, 6.3);
-// seattleStore.calculateHourlySales();
-// seattleStore.calculateDailyTotalSales();
-// seattleStore.renderStoreInfoToTable();
-
-
-
 
 
