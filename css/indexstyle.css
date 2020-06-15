@@ -1,6 +1,5 @@
 *{
   box-sizing: border-box;
-  /* float: left; */
 }
   
 body{
@@ -36,6 +35,11 @@ a:visited{
 /*-------------------------------------------------- MAIN STYLING STARTS HERE */
 
 
+#divone{
+  text-align: center;
+  width: 100%;
+}
+
 h1{
   font-family: 'Amatic SC', cursive;
   font-size: 70px;
@@ -53,8 +57,8 @@ h1{
 
 #logo{
   height: 150px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 8px;
   }
 
@@ -67,8 +71,29 @@ h2{
   margin-bottom: 10px;
 }
 
+/*---------------------------------------------------------------------*/
+
+#articleone{
+  float: left;
+  height: 600px;
+  width: 49%;
+  border: #627500 dotted 2px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+#articletwo{
+  float: right;
+  height: 600px;
+  width: 49%;
+  border: #627500 dotted 2px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
 section.locations{
   display: inline-block; 
+  height: 100%;
   width: 49%;
 }
 
@@ -82,20 +107,6 @@ li.centeredul{
   color: #202600;
 }
 
-article{
-  display: inline-block;
-  width: 48%;
-  border: #627500 dotted 2px;
-  border-radius: 40px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-/* #box-around-location{
-  border: #627500 dotted 2px;
-  border-radius: 40px;
-} */
-
 h3{
   font-family: 'Amatic SC', cursive;
   font-weight: bold;
@@ -105,6 +116,31 @@ h3{
   margin-left: 40px;
   margin-bottom: 10px;
   text-decoration: underline;
+}
+
+p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 22px;
+  font-style: italic;
+  color: #202600;
+  margin-left: 40px;
+  margin-right: 40px;
+  /* float: left; */
+}
+
+#biggerp{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 30px;
+  font-style: italic;
+  color: #202600;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+figure{
+  float: right;
+  opacity: .2;
+  margin-top: 40px;
 }
 
 h4{
@@ -129,39 +165,14 @@ h4{
   margin-bottom: 10px;
 }
 
-
-p{
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 22px;
-  font-style: italic;
-  color: #202600;
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-#fishschool{
-  float: right;
-  opacity: .2;
-  height: 250px;
-
-}
+/*-------------------------------------------------- FOOTER STYLING STARTS HERE */
 
 footer{
+  clear: both;
   color: #202600;
   font-size: 20px;
 }
 
-
-/* #ourstory{
-  background-image: url("img/fish-nobackground.png");
-} */
-
-/* #picture-line{
-  list-style: none;
+footer > img{
+  margin-top: 20px;
 }
-
-ul#picture-line li{
-  display: inline;
-} */
-
-/*-------------------------------------------------- FOOTER STYLING STARTS HERE */
