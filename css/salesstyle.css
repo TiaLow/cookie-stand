@@ -2,6 +2,25 @@ body{
   background-color: #DB610F30;
 }
 
+a{
+  text-decoration: none;
+  color: rgb(75, 75, 4);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+a:hover{
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+a:visited{
+  text-decoration: none;
+  color: rgb(111, 111, 3);
+  /* font-weight: bold; */
+  font-size: 15px;
+}
+
 h1{
   font-family: 'Amatic SC', cursive;
   border: #627500 dotted 2px;
@@ -13,20 +32,23 @@ h1{
 
 form{
   background-color: #DB610F90;
-  
-
+  border-radius: 10px;
+  color: #323a07;
 }
   
 table {
   border: solid black 1px;
   border-collapse: collapse;
+  border-radius: 10px;
   background-color: #DB610F60;
+  color: #323a07;
 }
 
 td {
   border: solid black 1px;
   padding: 3px;
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 input{
@@ -47,21 +69,12 @@ footer > nav > ul > li{
   margin-right: 25px;
 }
 
-a{
-  text-decoration: none;
-  color: rgb(75, 75, 4);
-  font-weight: bold;
-  font-size: 15px;
-}
-
-a:hover{
-  text-decoration: underline;
+p{
+  font-style: italic;
   font-size: 20px;
 }
-
-a:visited{
-  text-decoration: none;
-  color: rgb(111, 111, 3);
-  /* font-weight: bold; */
-  font-size: 15px;
+img.merch{
+  border: solid #627500 3px;
+  border-radius: 20px;
+  height: 200px;
 }

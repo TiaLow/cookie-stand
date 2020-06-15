@@ -74,10 +74,12 @@ section.locations{
 
 section > ul > li{
   list-style: none;
+  color: #202600;
 }
 
 li.centeredul{
   text-align: center;
+  color: #202600;
 }
 
 article{
@@ -130,16 +132,36 @@ h4{
 
 p{
   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 22px;
+  font-style: italic;
+  color: #202600;
   margin-left: 40px;
   margin-right: 40px;
 }
 
-#picture-line{
+#fishschool{
+  float: right;
+  opacity: .2;
+  height: 250px;
+
+}
+
+footer{
+  color: #202600;
+  font-size: 20px;
+}
+
+
+/* #ourstory{
+  background-image: url("img/fish-nobackground.png");
+} */
+
+/* #picture-line{
   list-style: none;
 }
 
 ul#picture-line li{
   display: inline;
-}
+} */
 
 /*-------------------------------------------------- FOOTER STYLING STARTS HERE */
